@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang='pt-br'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Login</title>
+    <link rel='stylesheet' href='{% static "css/login_cadastro.css" %}'>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1> Seja bem-vindo(a) <br> FinanceSystem!</h1>
+
+            <p>Seu dinheiro, sob controle. <br>
+                Visualize, registre e acompanhe
+                cada centavo com clareza.</p>
+        </div>
+
+        <div class="right">
+            <form method="post">
+                {% csrf_token %}
+                <h2>LOGIN</h2>
+
+                <div class="input-group">
+                    <label>Usuário</label>
+                    <input type="text" id="username" name="username" placeholder="Usuário" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Senha</label>
+                    <input type="password" name="password" placeholder="Senha" required>
+                </div>
+
+                <button type="submit" class="btn-save">Acessar</button>
+                <div class="Criar">
+                    Ainda não possui uma conta? <a href="{% url 'cadastro' %}">Fazer Cadastro</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

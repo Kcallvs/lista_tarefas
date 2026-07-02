@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang='pt-br'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Login</title>
+    <link rel='stylesheet' href='{% static "css/login_cadastro.css" %}'>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+             <h1> Seja bem-vindo(a) <br> FinanceSystem!</h1>
+
+            <p>Seu dinheiro, sob controle. <br>
+                Visualize, registre e acompanhe
+                cada centavo com clareza.</p>
+
+        </div>
+
+        <div class="right">
+            <form method="post">
+                {% csrf_token %}
+
+                <h2>CADASTRO</h2>
+
+                <div class="input-group">
+                    <label>Nome</label>
+                    <input type="text" name="nome" placeholder="Nome" required>
+
+                </div>
+
+                <div class="input-group">
+                    <label>Sobrenome</label>
+                    <input type="text" name="sobrenome" placeholder="Sobrenome" required>
+
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Usuário</label>
+                    <input type="text" id="username" name="username" placeholder="Usuário" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Senha</label>
+                    <input type="password" name="password1" placeholder="Senha" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Confirmar senha</label>
+                    <input type="password" name="password2" placeholder="Senha" required>
+                </div>
+
+                <button type="submit" class="btn-save">Salvar Cadastro</button>
+
+                <div class="Voltar">
+                    Já tem uma conta? <a href="{% url 'login' %}">Login</a>
+                </div>
+            </form>
+</body>
+
+</html>
