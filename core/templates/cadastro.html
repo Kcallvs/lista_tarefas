@@ -1,70 +1,93 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang='pt-br'>
-
+<html lang="pt-BR">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Login</title>
-    <link rel='stylesheet' href='{% static "css/login_cadastro.css" %}'>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criar conta — Foco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/login_cadastro.css' %}">
 </head>
-
 <body>
-    <div class="container">
-        <div class="left">
-             <h1> Seja bem-vindo(a) <br> FinanceSystem!</h1>
 
-            <p>Seu dinheiro, sob controle. <br>
-                Visualize, registre e acompanhe
-                cada centavo com clareza.</p>
+<div class="auth-shell">
 
+  <section class="auth-brand">
+    <span class="brand-mark">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M3 14.5L9.5 21L23 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Foco
+    </span>
+
+    <div class="auth-pitch">
+      <h1>Organize seu dia com clareza.</h1>
+      <p>Um painel simples para acompanhar suas tarefas, prioridades e prazos.</p>
+    </div>
+
+  </section>
+
+  <section class="auth-form-side">
+    <div class="auth-box">
+      <span class="brand-mark">
+        <svg width="22" height="22" viewBox="0 0 26 26" fill="none"><path d="M3 14.5L9.5 21L23 6" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Foco
+      </span>
+      <h2>Criar sua conta</h2>
+      <p class="lead">Leva menos de dois minutos.</p>
+
+      <form data-auth-form novalidate>
+        <div class="auth-row-2">
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input class="input" type="text" id="nome" name="nome" placeholder="Seu nome" data-required>
+            <span class="error-msg">Informe seu nome.</span>
+          </div>
+          <div class="field">
+            <label for="sobrenome">Sobrenome</label>
+            <input class="input" type="text" id="sobrenome" name="sobrenome" placeholder="Seu sobrenome" data-required>
+            <span class="error-msg">Informe seu sobrenome.</span>
+          </div>
         </div>
 
-        <div class="right">
-            <form method="post">
-                {% csrf_token %}
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input class="input" type="email" id="email" name="email" placeholder="voce@email.com" data-required>
+          <span class="error-msg">Informe um e-mail válido.</span>
+        </div>
 
-                <h2>CADASTRO</h2>
+        <div class="field">
+          <label for="senha">Senha</label>
+          <div class="input-wrap">
+            <input class="input" type="password" id="senha" name="senha" placeholder="Crie uma senha" data-required>
+            <button type="button" class="input-toggle" data-toggle-password="senha">Mostrar</button>
+          </div>
+          <div class="strength-bar"><span></span><span></span><span></span></div>
+          <span class="hint">Use ao menos 6 caracteres, com letras e números.</span>
+        </div>
 
-                <div class="input-group">
-                    <label>Nome</label>
-                    <input type="text" name="nome" placeholder="Nome" required>
+        <div class="field">
+          <label for="confirmarSenha">Confirmar senha</label>
+          <div class="input-wrap">
+            <input class="input" type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Repita a senha" data-required>
+            <button type="button" class="input-toggle" data-toggle-password="confirmarSenha">Mostrar</button>
+          </div>
+          <span class="error-msg">As senhas não coincidem.</span>
+        </div>
 
-                </div>
+        <label class="checkbox-line" style="margin-bottom:20px;">
+          <input type="checkbox" required> Concordo com os <a href="#" class="link-accent">termos de uso</a>
+        </label>
 
-                <div class="input-group">
-                    <label>Sobrenome</label>
-                    <input type="text" name="sobrenome" placeholder="Sobrenome" required>
+        <button type="submit" class="btn btn-primary btn-block">Criar conta</button>
+      </form>
 
-                </div>
+      <p class="auth-switch">Já tem conta? <a href="login.html" class="link-accent">Entrar</a></p>
+    </div>
+  </section>
 
-                <div class="input-group">
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="Email" required>
-                </div>
+</div>
 
-                <div class="input-group">
-                    <label>Usuário</label>
-                    <input type="text" id="username" name="username" placeholder="Usuário" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Senha</label>
-                    <input type="password" name="password1" placeholder="Senha" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Confirmar senha</label>
-                    <input type="password" name="password2" placeholder="Senha" required>
-                </div>
-
-                <button type="submit" class="btn-save">Salvar Cadastro</button>
-
-                <div class="Voltar">
-                    Já tem uma conta? <a href="{% url 'login' %}">Login</a>
-                </div>
-            </form>
+<script src="{% static 'js/app.js' %}"></script>
 </body>
-
 </html>
