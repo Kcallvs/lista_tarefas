@@ -2,71 +2,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Entrar — Foco</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
-<link rel="stylesheet" href="{% static 'css/login_cadastro.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar — Foco</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/login_cadastro.css' %}">
 </head>
 <body>
 
 <div class="auth-shell">
 
-  <section class="auth-brand">
-    <span class="brand-mark">
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M3 14.5L9.5 21L23 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Foco
-    </span>
+    <section class="auth-brand">
+        <span class="brand-mark">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                <path d="M3 14.5L9.5 21L23 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Foco
+        </span>
+    </section>
 
-    <div class="auth-pitch">
-      <h1>Organize seu dia com clareza.</h1>
-      <p>Um painel simples para acompanhar suas tarefas, prioridades e prazos.</p>
-    </div>
+    <section class="auth-form-side">
+        <div class="auth-box">
+            <span class="brand-mark brand-form">
+                <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+                    <path d="M3 14.5L9.5 21L23 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Foco
+            </span>
 
-   
-  </section>
+            <h2>Bem-vindo de volta</h2>
+            <p class="lead">Entre com sua conta para ver suas tarefas de hoje.</p>
 
-  <section class="auth-form-side">
-    <div class="auth-box">
-      <span class="brand-mark">
-        <svg width="22" height="22" viewBox="0 0 26 26" fill="none"><path d="M3 14.5L9.5 21L23 6" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Foco
-      </span>
-      <h2>Bem-vindo de volta</h2>
-      <p class="lead">Entre com sua conta para ver suas tarefas de hoje.</p>
+            <form method="post">
+                {% csrf_token %}
 
-      <form data-auth-form novalidate>
-        <div class="field">
-          <label for="email">E-mail</label>
-          <input class="input" type="email" id="email" name="email" placeholder="voce@email.com" data-required>
-          <span class="error-msg">Informe um e-mail válido.</span>
+                <div class="field">
+                    <label for="email">E-mail</label>
+                    <input class="input" type="email" id="email" name="email" placeholder="voce@email.com">
+                </div>
+
+                <div class="field">
+                    <label for="senha">Senha</label>
+                    <div class="input-wrap">
+                        <input class="input" type="password" id="senha" name="senha" placeholder="Sua senha">
+                        <button type="button" class="input-toggle">Mostrar</button>
+                    </div>
+                </div>
+
+                <div class="auth-options-row">
+                    <label class="checkbox-line">
+                        <input type="checkbox"> Lembrar de mim
+                    </label>
+                    <a href="#" class="link-accent">Esqueci a senha</a>
+                </div>
+
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+
+            <p class="auth-switch">
+                Ainda não tem conta?
+                <a href="{% url 'cadastro' %}" class="link-accent">Criar conta</a>
+            </p>
         </div>
-
-        <div class="field">
-          <label for="senha">Senha</label>
-          <div class="input-wrap">
-            <input class="input" type="password" id="senha" name="senha" placeholder="Sua senha" data-required>
-            <button type="button" class="input-toggle" data-toggle-password="senha">Mostrar</button>
-          </div>
-          <span class="error-msg">Informe sua senha.</span>
-        </div>
-
-        <div class="auth-options-row">
-          <label class="checkbox-line"><input type="checkbox"> Lembrar de mim</label>
-          <a href="#" class="link-accent">Esqueci a senha</a>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-      </form>
-
-      <p class="auth-switch">Ainda não tem conta? <a href="cadastro.html" class="link-accent">Criar conta</a></p>
-    </div>
-  </section>
+    </section>
 
 </div>
 
-<!-- <script src="{% static 'js/app.js' %}"></script> -->
 </body>
 </html>
