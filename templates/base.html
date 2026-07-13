@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Foco{% endblock %}</title>
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    <div class="container-dashboard">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <i class="fa-solid fa-check-double"></i>
+                <span>Foco</span>
+            </div>
+
+            <div class="profile">
+
+                <img src="{% static 'img/user.png' %}" alt="Usuário">
+
+                <h3>{{ request.user.first_name|default:request.user.username }}</h3>
+
+                <p>{{ request.user.email }}</p>
+
+            </div>
+
+            <nav class="menu">
+
+                <a href="{% url 'dashboard' %}" class="active">
+                    <i class="fa-solid fa-table-columns"></i>
+                    Dashboard
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-list-check"></i>
+                    Minhas tarefas
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    Calendário
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-folder"></i>
+                    Categorias
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    Relatórios
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Configurações
+                </a>
+
+            </nav>
+
+            <div class="logout">
+
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Sair
+                </a>
+
+            </div>
+
+        </aside>
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <form class="search-box">
+
+                    <input type="text" placeholder="Pesquisar tarefas...">
+
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+
+                </form>
+
+                <div class="top-actions">
+
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-calendar"></i>
+                    </button>
+
+                    <div class="top-profile">
+
+                        <img src="{% static 'img/user.png' %}" alt="Perfil">
+
+                        <div>
+
+                            <h4>{{ request.user.first_name|default:request.user.username }}</h4>
+
+                            <span>{{ request.user.email }}</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- ========= CONTEÚDO ========= -->
+
+            <section class="content">
+
+                {% block content %}
+                {% endblock %}
+
+            </section>
+
+        </main>
+
+    </div>
+
+    {% block extra_js %}{% endblock %}
+
+</body>
+
+</html>

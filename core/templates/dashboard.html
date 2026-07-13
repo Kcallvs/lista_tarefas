@@ -1,0 +1,299 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <div class="welcome">
+
+        <div>
+            <h1>Olá,
+                <span>{{ request.user.first_name|default:request.user.username }}</span>
+                👋
+            </h1>
+
+            <p>Organize seu dia e mantenha o foco nas suas tarefas.</p>
+        </div>
+
+        <a href="{% url 'nova_tarefa' %}" class="btn-primary">
+            <i class="fa-solid fa-plus"></i>
+            Nova tarefa
+        </a>
+
+    </div>
+
+
+    <!-- Cards -->
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-icon purple">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+
+            <div>
+
+                <h2>12</h2>
+
+                <span>Total de tarefas</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon green">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div>
+
+                <h2>8</h2>
+
+                <span>Concluídas</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon orange">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+            <div>
+
+                <h2>3</h2>
+
+                <span>Em andamento</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon red">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <div>
+
+                <h2>1</h2>
+
+                <span>Atrasadas</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Conteúdo principal -->
+
+    <div class="dashboard-grid">
+
+        <!-- Tarefas -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>Tarefas de Hoje</h2>
+
+                <a href="{% url 'tarefas' %}">
+                    Ver todas
+                </a>
+
+            </div>
+
+            <div class="task-list">
+
+                <div class="task-card">
+
+                    <div>
+
+                        <h3>Finalizar projeto Django</h3>
+
+                        <p>Entrega até às 18:00</p>
+
+                    </div>
+
+                    <span class="status andamento">
+                        Em andamento
+                    </span>
+
+                </div>
+
+
+                <div class="task-card">
+
+                    <div>
+
+                        <h3>Estudar Banco de Dados</h3>
+
+                        <p>2 horas</p>
+
+                    </div>
+
+                    <span class="status concluida">
+                        Concluída
+                    </span>
+
+                </div>
+
+
+                <div class="task-card">
+
+                    <div>
+
+                        <h3>Responder e-mails</h3>
+
+                        <p>30 minutos</p>
+
+                    </div>
+
+                    <span class="status pendente">
+                        Pendente
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Progresso -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>Seu progresso</h2>
+
+            </div>
+
+            <div class="progress-box">
+
+                <div class="circle">
+
+                    <span>75%</span>
+
+                </div>
+
+                <h3>Meta diária</h3>
+
+                <p>Você concluiu 9 de 12 tarefas.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Segunda linha -->
+
+    <div class="dashboard-grid">
+
+        <!-- Atividades -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>Atividades recentes</h2>
+
+            </div>
+
+            <ul class="activity-list">
+
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Você concluiu a tarefa <b>Enviar relatório</b>.
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-plus"></i>
+                    Nova tarefa adicionada.
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-pen"></i>
+                    Você editou uma tarefa.
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-trash"></i>
+                    Uma tarefa foi removida.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- Estatísticas -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>Resumo</h2>
+
+            </div>
+
+            <div class="resume">
+
+                <div class="resume-item">
+
+                    <span>Produtividade</span>
+
+                    <strong>89%</strong>
+
+                </div>
+
+                <div class="resume-item">
+
+                    <span>Sequência</span>
+
+                    <strong>15 dias</strong>
+
+                </div>
+
+                <div class="resume-item">
+
+                    <span>Tempo focado</span>
+
+                    <strong>24h</strong>
+
+                </div>
+
+                <div class="resume-item">
+
+                    <span>Tarefas concluídas</span>
+
+                    <strong>158</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,116 +1,128 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar conta — Foco</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/login_cadastro.css' %}">
 </head>
+
 <body>
 
-<div class="auth-shell">
+    <div class="auth-shell">
 
-    <!-- LADO ESQUERDO -->
-    <section class="auth-brand">
-        <span class="brand-mark">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-                <path d="M3 14.5L9.5 21L23 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Foco
-        </span>
-    </section>
-
-    <!-- LADO DIREITO -->
-    <section class="auth-form-side">
-        <div class="auth-box">
-
-            <span class="brand-mark brand-form">
-                <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
-                    <path d="M3 14.5L9.5 21L23 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- LADO ESQUERDO -->
+        <section class="auth-brand">
+            <span class="brand-mark">
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                    <path d="M3 14.5L9.5 21L23 6" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round" />
                 </svg>
                 Foco
             </span>
+        </section>
 
-            <h2>Criar sua conta</h2>
-            <p class="lead">Leva menos de dois minutos.</p>
+        <!-- LADO DIREITO -->
+        <section class="auth-form-side">
+            <div class="auth-box">
 
-            <form method="post">
-                {% csrf_token %}
+                <span class="brand-mark brand-form">
+                    <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+                        <path d="M3 14.5L9.5 21L23 6" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    Foco
+                </span>
 
-                {% if form.errors %}
+                <h2>Criar sua conta</h2>
+                <p class="lead">Leva menos de dois minutos.</p>
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    {% if form.errors %}
                     <div class="form-errors">
                         {% for field in form %}
-                            {% for error in field.errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
+                        {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
                         {% endfor %}
 
                         {% for error in form.non_field_errors %}
-                            <p>{{ error }}</p>
+                        <p>{{ error }}</p>
                         {% endfor %}
                     </div>
-                {% endif %}
+                    {% endif %}
 
-                <div class="auth-row-2">
-                    <div class="field">
-                        <label for="first_name">Nome</label>
-                        <input class="input" type="text" id="first_name" name="first_name" placeholder="Seu nome" required>
+                    <div class="auth-row-2">
+                        <div class="field">
+                            <label for="first_name">Nome</label>
+                            <input class="input" type="text" id="first_name" name="first_name" placeholder="Seu nome"
+                                required>
+                        </div>
+
+                        <div class="field">
+                            <label for="last_name">Sobrenome</label>
+                            <input class="input" type="text" id="last_name" name="last_name" placeholder="Seu sobrenome"
+                                required>
+                        </div>
                     </div>
 
                     <div class="field">
-                        <label for="last_name">Sobrenome</label>
-                        <input class="input" type="text" id="last_name" name="last_name" placeholder="Seu sobrenome" required>
+                        <label for="username">Usuário</label>
+                        <input class="input" type="text" id="username" name="username"
+                            placeholder="Escolha um nome de usuário" required>
                     </div>
-                </div>
 
-                <div class="field">
-                    <label for="username">Usuário</label>
-                    <input class="input" type="text" id="username" name="username" placeholder="Escolha um nome de usuário" required>
-                </div>
-
-                <div class="field">
-                    <label for="email">E-mail</label>
-                    <input class="input" type="email" id="email" name="email" placeholder="voce@email.com" required>
-                </div>
-
-                <div class="field">
-                    <label for="password1">Senha</label>
-                    <div class="input-wrap">
-                        <input class="input" type="password" id="password1" name="password1" placeholder="Crie uma senha" required>
-                        <button type="button" class="input-toggle">Mostrar</button>
+                    <div class="field">
+                        <label for="email">E-mail</label>
+                        <input class="input" type="email" id="email" name="email" placeholder="voce@email.com" required>
                     </div>
-                    <span class="hint">Use ao menos 6 caracteres.</span>
-                </div>
 
-                <div class="field">
-                    <label for="password2">Confirmar senha</label>
-                    <div class="input-wrap">
-                        <input class="input" type="password" id="password2" name="password2" placeholder="Repita a senha" required>
-                        <button type="button" class="input-toggle">Mostrar</button>
+                    <div class="field">
+                        <label for="password1">Senha</label>
+                        <div class="input-wrap">
+                            <input class="input" type="password" id="password1" name="password1"
+                                placeholder="Crie uma senha" required>
+                            <button type="button" class="input-toggle">Mostrar</button>
+                        </div>
+                        <span class="hint">Use ao menos 6 caracteres.</span>
                     </div>
-                </div>
 
-                <label class="checkbox-line terms-line">
-                    <input type="checkbox" required>
-                    <span>Concordo com os <a href="#" class="link-accent">termos de uso</a></span>
-                </label>
+                    <div class="field">
+                        <label for="password2">Confirmar senha</label>
+                        <div class="input-wrap">
+                            <input class="input" type="password" id="password2" name="password2"
+                                placeholder="Repita a senha" required>
+                            <button type="button" class="input-toggle">Mostrar</button>
+                        </div>
+                    </div>
 
-                <button type="submit" class="btn-login">Criar conta</button>
-            </form>
+                    <label class="checkbox-line terms-line">
+                        <input type="checkbox" required>
+                        <span>Concordo com os <a href="#" class="link-accent">termos de uso</a></span>
+                    </label>
 
-            <p class="auth-switch">
-                Já tem conta?
-                <a href="{% url 'login' %}" class="link-accent">Entrar</a>
-            </p>
-        </div>
-    </section>
+                    <button type="submit" class="btn-login">Criar conta</button>
+                </form>
 
-</div>
+                <p class="auth-switch">
+                    Já tem conta?
+                    <a href="{% url 'login' %}" class="link-accent">Entrar</a>
+                </p>
+            </div>
+        </section>
+
+    </div>
 
 </body>
+
 </html>
